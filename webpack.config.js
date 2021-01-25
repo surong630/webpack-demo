@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
@@ -6,5 +7,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     // filename: 'main.js',
     filename: '[name].[contenthash].js'
+  },
+  plugins: [new HtmlWebpackPlugin({
+    title: '苏',
+    template: 'src/assets/index.html'
+  })],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   }
 }
