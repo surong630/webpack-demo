@@ -1,21 +1,15 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const arg = require('./webpack.config.base.js')
 module.exports = {
+  ...arg,
   mode: 'development',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist'
-  },
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    // filename: 'main.js',
-    filename: '[name].[contenthash].js'
-  },
-  plugins: [new HtmlWebpackPlugin({
+  plugins: [
+    new HtmlWebpackPlugin({
     title: '苏',
     template: 'src/assets/index.html'
-  })],
+  })
+],
   module: {
     rules: [
       {
